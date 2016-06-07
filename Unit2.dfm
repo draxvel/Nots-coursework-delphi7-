@@ -39,7 +39,7 @@ object Form2: TForm2
     ParentFont = False
   end
   object lbl3: TLabel
-    Left = 88
+    Left = 96
     Top = 72
     Width = 102
     Height = 18
@@ -75,9 +75,9 @@ object Form2: TForm2
     Visible = False
   end
   object edt1: TEdit
-    Left = 34
+    Left = 16
     Top = 40
-    Width = 250
+    Width = 257
     Height = 26
     Anchors = [akTop]
     Font.Charset = RUSSIAN_CHARSET

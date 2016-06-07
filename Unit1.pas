@@ -11,29 +11,29 @@ type
   TForm1 = class(TForm)
     mm1: TMainMenu;
     N1: TMenuItem;
-    N2: TMenuItem;
     Timer1: TTimer;
-    btn1: TBitBtn;
     cal1: TMonthCalendar;
-    con1: TADOConnection;
-    btn3: TButton;
-    dbedt3: TDBEdit;
     dbgrd1: TDBGrid;
     N3: TMenuItem;
     N4: TMenuItem;
-    dtp1: TDateTimePicker;
-    chk1: TCheckBox;
-    dbedt2: TDBEdit;
-    dbredt1: TDBRichEdit;
-    ds1: TDataSource;
+    con1: TADOConnection;
     qry1: TADOQuery;
+    ds1: TDataSource;
+    btn_add: TBitBtn;
+    btn_delete: TBitBtn;
+    btn_edit: TBitBtn;
+    btn_tomorrow: TBitBtn;
+    N2: TMenuItem;
+    btn_today: TBitBtn;
     procedure Timer1Timer(Sender: TObject);
-    procedure btn1Click(Sender: TObject);
     procedure cal1Click(Sender: TObject);
-    procedure btn3Click(Sender: TObject);
-    procedure chk1Click(Sender: TObject);
+    procedure btn_addClick(Sender: TObject);
+    procedure btn_tomorrowClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure dtp1Change(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure btn_editClick(Sender: TObject);
+    procedure btn_deleteClick(Sender: TObject);
+    procedure btn_todayClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -45,68 +45,66 @@ var
   Form1: TForm1;
 implementation
 
-uses Unit2;
+uses Unit2, Unit3;
 
 {$R *.dfm}
-     var d:Tdate;
-     filter:Boolean;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
 Form1.Caption:='NotS - '+TimeToStr(now);
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
+
+procedure TForm1.cal1Click(Sender: TObject);
 begin
-dtp1.Format := 'HH:mm';
+ if N4.Checked then  //коли увімкнений фільрт філтруємо по даті відповідно до календаря
+begin
+qry1.Filter := 'Дата = ' + QuotedStr(datetostr(cal1.date));
+qry1.Filtered :=true;
+end
+else
+qry1.Filtered :=false;
 end;
 
-procedure TForm1.btn3Click(Sender: TObject);
+procedure TForm1.btn_addClick(Sender: TObject);
+begin
+  Form3.Show;
+  qry1.Insert;
+end;
+
+
+
+procedure TForm1.btn_tomorrowClick(Sender: TObject);
+begin
+qry1.Filter:= 'Дата = ' + QuotedStr(DateToStr(Date()+1));
+qry1.Filtered :=true;
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+qry1.Filter:= 'Дата = ' + QuotedStr(DateToStr(Date()));
+qry1.Filtered :=true;
+end;
+
+procedure TForm1.N2Click(Sender: TObject);
+begin
+dbgrd1.DataSource.DataSet.Delete; //видалення всіх записів
+end;
+
+procedure TForm1.btn_editClick(Sender: TObject);
+begin
+Form3.Show;
+end;
+
+procedure TForm1.btn_deleteClick(Sender: TObject);
 begin
 qry1.Delete;
 end;
 
-
-procedure TForm1.chk1Click(Sender: TObject);
+procedure TForm1.btn_todayClick(Sender: TObject);
 begin
-if chk1.Checked then dtp1.Enabled:=true
-else  dtp1.Enabled:=false;
-end;
-
-
-procedure TForm1.btn1Click(Sender: TObject);
-begin
-  if dbredt1.text<>'' then
-  begin
-  qry1.Insert; //додаємо значення в таблицю
-  end
-else  showmessage('Введіть тест нотатки');
-
-qry1.Sort:='[Дата]';
-qry1.Sort:='[Час]';
-
-
-end;
-
-procedure TForm1.cal1Click(Sender: TObject);
-begin
-  dbedt3.Text:=datetostr(cal1.Date);
-
- if N4.Checked then  //коли увімкнений фільрт філтруємо по даті відповідно до календаря
-begin
+qry1.Filter:= 'Дата = ' + QuotedStr(DateToStr(Date()));
 qry1.Filtered :=true;
-qry1.Filter := 'Дата = ' + QuotedStr(datetostr(d));
-end
-else
-begin
-qry1.Filtered :=false;
-end;
-end;
-
-
-procedure TForm1.dtp1Change(Sender: TObject);
-begin
-dbedt2.text:= TimeToStr(dtp1.Time);
 end;
 
 end.
