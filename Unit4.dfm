@@ -1,12 +1,13 @@
-object Form1: TForm1
-  Left = 864
-  Top = 150
+object Form4: TForm4
+  Left = 499
+  Top = 332
+  Width = 370
+  Height = 153
   Align = alCustom
-  AutoScroll = False
-  BiDiMode = bdLeftToRight
-  ClientHeight = 351
-  ClientWidth = 449
-  Color = clSkyBlue
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  Caption = #1055#1088#1086' '#1087#1088#1086#1075#1088#1072#1084#1091
+  Color = clCream
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -6538,180 +6539,34 @@ object Form1: TForm1
     1F1F1F052120200100000000000000000000000000000000FC07000000030000
     0003000000030000800300008003000080010000C0010000C0010000C0010000
     E0010000E0000000E0000000E0000000F0000000F00F0000}
-  Menu = mm1
   OldCreateOrder = False
-  ParentBiDiMode = False
-  Scaled = False
-  OnCreate = Timer1Timer
-  OnShow = FormShow
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object cal1: TMonthCalendar
-    Left = 232
-    Top = 8
-    Width = 169
-    Height = 203
-    Hint = #1042#1080#1073#1077#1088#1110#1090#1100' '#1087#1086#1090#1088#1110#1073#1085#1091' '#1076#1072#1090#1091'...'
-    CalColors.BackColor = clCream
-    CalColors.TitleBackColor = clSkyBlue
-    Date = 42531.798602372680000000
-    FirstDayOfWeek = dowMonday
+  object lbl1: TLabel
+    Left = 0
+    Top = 0
+    Width = 355
+    Height = 69
+    Alignment = taCenter
+    Caption = 
+      #1044#1072#1085#1072' '#1087#1088#1086#1075#1088#1072#1084#1072' - "'#1044#1110#1083#1086#1074#1080#1081' '#1097#1086#1076#1077#1085#1085#1080#1082'",'#13#10#1082#1091#1088#1089#1086#1074#1072' '#1088#1086#1073#1086#1090#1072' '#1079' '#1055#1088#1086#1075#1088#1072#1084#1091#1074#1072 +
+      #1085#1085#1103'.'#13#10#1042#1080#1082#1086#1085#1072#1074' '#1089#1090#1091#1076#1077#1085#1090' '#1075#1088#1091#1087#1080' '#1050#1057#1052'-31 '#1058#1082#1072#1095#1091#1082' '#1053#1072#1079#1072#1088
+    Color = clCream
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -19
     Font.Name = 'Calibri'
     Font.Style = []
+    ParentColor = False
     ParentFont = False
-    ParentShowHint = False
-    ShowHint = True
+  end
+  object btn1: TBitBtn
+    Left = 64
+    Top = 80
+    Width = 217
+    Height = 25
+    Caption = 'OK'
     TabOrder = 0
-    OnClick = cal1Click
-  end
-  object dbgrd1: TDBGrid
-    Left = 8
-    Top = 216
-    Width = 433
-    Height = 129
-    BorderStyle = bsNone
-    Color = clGradientInactiveCaption
-    DataSource = ds1
-    Options = [dgTitles, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-    TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = #1044#1072#1090#1072
-        Title.Alignment = taCenter
-        Title.Color = clInactiveCaption
-        Width = 65
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = #1063#1072#1089
-        Title.Alignment = taCenter
-        Title.Color = clInactiveCaption
-        Width = 57
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = #1053#1086#1090#1072#1090#1082#1072
-        Title.Alignment = taCenter
-        Title.Color = clInactiveCaption
-        Width = 290
-        Visible = True
-      end>
-  end
-  object btn_add: TBitBtn
-    Left = 32
-    Top = 8
-    Width = 153
-    Height = 49
-    Caption = #1053#1086#1074#1072' '#1085#1086#1090#1072#1090#1082#1072
-    TabOrder = 2
-    OnClick = btn_addClick
-  end
-  object btn_delete: TBitBtn
-    Left = 40
-    Top = 176
-    Width = 137
-    Height = 25
-    Caption = #1042#1080#1076#1072#1083#1080#1090#1080' '#1085#1086#1090#1072#1090#1082#1091
-    TabOrder = 3
-    OnClick = btn_deleteClick
-  end
-  object btn_edit: TBitBtn
-    Left = 40
-    Top = 144
-    Width = 137
-    Height = 25
-    Hint = #1042#1080#1076#1110#1083#1110#1090#1100' '#1085#1086#1090#1072#1090#1082#1091' '#1081' '#1085#1072#1090#1080#1089#1085#1110#1090#1100' '#1094#1102' '#1082#1085#1086#1087#1082#1091
-    Caption = #1056#1077#1076#1072#1075#1091#1074#1072#1090#1080' '#1085#1086#1090#1072#1090#1082#1091
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 4
-    OnClick = btn_editClick
-  end
-  object btn_tomorrow: TBitBtn
-    Left = 40
-    Top = 104
-    Width = 137
-    Height = 25
-    Caption = #1057#1087#1080#1089#1086#1082' '#1089#1087#1088#1072#1074' '#1085#1072' '#1079#1072#1074#1090#1088#1072
-    TabOrder = 5
-    OnClick = btn_tomorrowClick
-  end
-  object btn_today: TBitBtn
-    Left = 40
-    Top = 72
-    Width = 137
-    Height = 25
-    Caption = #1057#1087#1080#1089#1086#1082' '#1089#1087#1088#1072#1074' '#1085#1072' '#1089#1100#1086#1075#1086#1076#1085#1110
-    TabOrder = 6
-    OnClick = btn_todayClick
-  end
-  object mm1: TMainMenu
-    Left = 368
-    Top = 168
-    object N3: TMenuItem
-      Caption = #1052#1077#1085#1077#1076#1078#1077#1088' '#1085#1086#1090#1072#1090#1086#1082
-      object N4: TMenuItem
-        AutoCheck = True
-        Caption = #1060#1110#1083#1100#1090#1088#1091#1074#1072#1090#1080' '#1079#1072' '#1076#1072#1090#1086#1102
-        Checked = True
-      end
-      object N2: TMenuItem
-        Caption = #1042#1080#1076#1072#1083#1080#1090#1080' '#1074#1089#1110' '#1079#1072#1087#1080#1089#1080
-        Hint = #1059' '#1074#1080#1087#1072#1076#1082#1091' '#1082#1086#1083#1080' '#1073#1072#1075#1072#1090#1086' '#1079#1072#1087#1080#1089#1110#1074
-        OnClick = N2Click
-      end
-    end
-    object N1: TMenuItem
-      Caption = #1055#1088#1086' '#1087#1088#1086#1075#1088#1072#1084#1091
-      OnClick = N1Click
-    end
-  end
-  object Timer1: TTimer
-    OnTimer = Timer1Timer
-    Left = 400
-  end
-  object con1: TADOConnection
-    Connected = True
-    ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=Base.' +
-      'mdb;Mode=Share Deny None;Persist Security Info=False;Jet OLEDB:S' +
-      'ystem database="";Jet OLEDB:Registry Path="";Jet OLEDB:Database ' +
-      'Password="";Jet OLEDB:Engine Type=5;Jet OLEDB:Database Locking M' +
-      'ode=1;Jet OLEDB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk ' +
-      'Transactions=1;Jet OLEDB:New Database Password="";Jet OLEDB:Crea' +
-      'te System Database=False;Jet OLEDB:Encrypt Database=False;Jet OL' +
-      'EDB:Don'#39't Copy Locale on Compact=False;Jet OLEDB:Compact Without' +
-      ' Replica Repair=False;Jet OLEDB:SFP=False'
-    LoginPrompt = False
-    Mode = cmShareDenyNone
-    Provider = 'Microsoft.Jet.OLEDB.4.0'
-    Left = 400
-    Top = 48
-  end
-  object ds1: TDataSource
-    DataSet = qry1
-    Left = 400
-    Top = 144
-  end
-  object qry1: TADOQuery
-    Active = True
-    Connection = con1
-    CursorType = ctStatic
-    Parameters = <>
-    SQL.Strings = (
-      'SELECT * from NotS')
-    Left = 400
-    Top = 104
   end
 end

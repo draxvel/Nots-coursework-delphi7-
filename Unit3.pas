@@ -17,13 +17,10 @@ type
     dtp2: TDateTimePicker;
     dbedt1: TDBEdit;
     procedure btn1_okClick(Sender: TObject);
-    procedure btn4Click(Sender: TObject);
-    procedure dtp1Change(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure chk1Click(Sender: TObject);
-    procedure dtp2Change(Sender: TObject);
-    procedure dbredt_noteChange(Sender: TObject);
     procedure btn1_cancelClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,27 +38,25 @@ uses Unit1;
 
 procedure TForm3.btn1_okClick(Sender: TObject);
 begin
-  Form1.qry1.Post;
-//  Form1.qry1.Sort:='[Дата]';
-//  Form1.qry1.Sort:='[Час]';
-close;
-end;
+dbedt1.Text:=DateToStr(dtp2.date);
 
-procedure TForm3.btn4Click(Sender: TObject);
-begin
-//dbedt1.SelText;
-//dbredt1.SelText:=AnsiUpperCase(dbredt1.SelText);
-end;
-
-procedure TForm3.dtp1Change(Sender: TObject);
-begin
- if dtp1.Enabled then
+if dtp1.Enabled then  //запис часу
 dbedt_time.text:= TimeToStr(dtp1.Time);
+
+  if dbredt_note.Text='' then //перевіряється чи користувач ввів текст нотатки
+  ShowMessage('Введіть нотатку')
+  else
+  begin
+  Form1.qry1.Post;
+  Form1.qry1.Sort:='[Дата]'; //сортування в таблиці за датою і часом
+  Form1.qry1.Sort:='[Час]';
+  close;
+end;
 end;
 
 procedure TForm3.FormShow(Sender: TObject);
 begin
-    dtp1.Format := 'HH:mm';
+dtp1.Format := 'HH:mm';
 end;
 
 procedure TForm3.chk1Click(Sender: TObject);
@@ -74,20 +69,15 @@ dbedt_time.Clear;
 end;
 end;
 
-
-procedure TForm3.dtp2Change(Sender: TObject);
-begin
-dbedt1.Text:=DateToStr(dtp2.date);
-end;
-
-procedure TForm3.dbredt_noteChange(Sender: TObject);
-begin
- dbedt1.Text:=DateToStr(dtp2.date);
-end;
-
 procedure TForm3.btn1_cancelClick(Sender: TObject);
 begin
 Close;
+end;
+
+procedure TForm3.FormCreate(Sender: TObject);
+begin
+btn1_ok.ModalResult:=mrOk;
+btn1_cancel.ModalResult:=mrCancel;
 end;
 
 end.

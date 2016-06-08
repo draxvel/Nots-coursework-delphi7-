@@ -44,15 +44,15 @@ password:string;
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-AssignFile(F,'password.txt');
-Reset (F);
+AssignFile(F,'password.txt'); //приєднюємо файл, який містить пароль
+Reset (F);  //відкриваємо і зчитуємо
 Readln(F,password);
 Closefile (F);
 end;
 
 procedure TForm2.edt1Change(Sender: TObject);
 begin
-if edt1.Text= password then
+if edt1.Text= password then //якщо введений та існуючий паролі збігаються - доступ дозволено
 begin
 Form1.Show;
 Form2.Hide;
@@ -61,7 +61,7 @@ end;
 
 procedure TForm2.lbl2Click(Sender: TObject);
 begin
-edt2.Visible:=True;
+edt2.Visible:=True; //якщо користувач хоче створити новий пароль
 btn1.visible:=True;
 lbl5.visible:=True;
 ActiveControl:=edt2;
@@ -71,9 +71,8 @@ procedure TForm2.btn1Click(Sender: TObject);
 begin
   password:=edt2.Text;
   Rewrite (F);
-  Writeln (F,password);
+  Writeln (F,password); //записуємо в змінну новий пароль
   Closefile (F);
-password:=edt2.Text;
 edt2.Visible:=false;
 btn1.visible:=false;
 lbl5.visible:=false;
